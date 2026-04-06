@@ -1,0 +1,58 @@
+ HARDIK GIRISH BHATT 
+Jersey City, NJ 07306 | bhatt.hardik4@gmail.com | (862) 588-8744 | LinkedIn  
+ 
+SUMMARY 
+AI & Automation Engineer with experience building enterprise -grade AI assistants, intelligent workflows, and system integrations 
+using Microsoft Power Platform, Copilot Studio, Azure AI, and REST APIs. Strong background in Python, SQL, and cloud -native 
+DevOps with hands-on experience integrating LLMs, RAG pipelines, and AI copilots into production business systems.  
+EDUCATION 
+Pace University (MS in Computer Science (Data Science)) Dec 2025 New York, NY 
+Mumbai University (Bachelor of Science (BS) in Information Technology) Aug 2022 Mumbai, India 
+TECHNICAL SKILLS 
+Languages:   Python, SQL, TypeScript, Java, C#, JavaScript, HTML, CSS, C++, PowerShell . 
+Business & Analytics:  Map Workflow Design, Process Automation, Data Modelling, KPI/OKR Design, API integrations,ETL/ELT 
+pipelines, Data transformations, Multi-Agent Orchestration. 
+Frameworks & Libraries: LangChain, LangGraph, Pandas, PyTorch, TensorFlow, Keras, Scikit -learn, FAISS, NLTK, Pinecone. 
+Databases:   MySQL, AWS DynamoDB, PostgreSQL, MongoDB, Firebase, Snowflake, Redshift.  
+AI & Data Science:  LLM Agents, NLP, RAG, ML, Prompt Engineering, OpenAI, Generative AI, Classification, Regression.  
+Tools & Platforms: Microsoft Copilot Studio, Power Automate, ServiceNow, Salesforce Service Cloud, Zapier, Airtable, Azure 
+AI, AWS, REST APIs, JSON, OAuth2, Postman, GCP, Docker, GitHub, CI/CD, Scrum/Agile, Cursor, Claude Code.  
+PROFESSIONAL EXPERIENCE  
+AI Automation Intern @ TEKSCAPE INC. New York City, NY                                                              June 2025 – Oct 2025                                                                               
+● Owned and maintained production integrations and workflow automations across Sales, HR, and Operations systems using 
+Python, Power Automate, SharePoint, SQL Server, Azure AI services, REST APIs, and SQL reducing manual effort by ~40% 
+and improving turnaround time by ~20%.  
+● Designed, built, and deployed AI agents and copilots using LLM APIs, RAG pipelines, and orchestration frameworks to 
+automate workflows across Sales, HR, and Operations. 
+● Built Copilot AI agents integrating OpenAI APIs with enterprise data sources for context -aware responses & task 
+automation. 
+● Implemented multi-step agent workflows combining retrieval, reasoning, and tool execution (SQL queries, APIs, document 
+extraction) to complete tasks autonomously. 
+● Mapped end-to-end business processes, designed low-code integrations, and orchestrated multi-system workflows 
+(SharePoint, SQL Server, Azure, APIs) to deliver production-ready AI solutions for non-technical users.  
+● Built adoption and impact dashboards tracking usage, accuracy, cycle time, and automation ROI, enabling leadership to 
+measure value and prioritize expansion.  
+● Partnered with business teams to run enablement sessions, document workflows, and seed an AI -first culture by training 
+internal “power users” on prompt engineering, copilots, and automation best practices.  
+● Iterated on solutions using user feedback, QA checks, and performance metrics to continuously improve reliability, 
+relevance, and adoption of AI workflows. 
+Data Quality & Operations Manager @ HUDL (Wyscout) Mumbai, India Sep 2017– Dec 2023 
+● Led a large-scale global data operation of 11 Team Leads, 9 QA Specialists, and 300+ Data Analysts, delivering high-
+accuracy events and tagging data over 600 major international leagues. 
+● Improved SLA compliance by ~18% through workflow redesign, shift optimization, and predictive scheduling for high-
+volume match weeks. 
+● Built and maintained SQL-based dashboards tracking analyst throughput, TAT, error categories, and quality KPIs, 
+enabling leadership to make data-driven decisions on staffing and automation initiatives. 
+● Used Python for exploratory data analysis (EDA) on production datasets to identify tagging bottlenecks, outliers, and 
+team-level performance trends. 
+● Integrated internal performance APIs into reporting workflows to automatically pull analyst statistics, match 
+metadata, and quality scores, improving data freshness and reducing manual processing. 
+● Collaborated with product and engineering teams to optimize tagging workflows, reduce operational friction, and 
+improve system reliability across data pipelines. 
+IT Workspace Administrator @ JUST ENGINEERS Mumbai, India Jun 2014 – Jul 2017 
+● Troubleshooted network hardware & software issues for employees, performing software installations & updating 
+systems to maintain network security while managing system access & tracking hardware inventory. 
+ACADEMIC PROJECT (Global Misinformation Tracker-GMT) Aug - Nov 2025 
+● Built Python-based ETL pipelines with embeddings, vector search, and LLM APIs for automated text analysis. 
+● Designed retrieval + reasoning workflows and dashboards to evaluate system accuracy and performance. 
+● Demonstrated agentic automation patterns applicable to internal decision-support tools. 

@@ -17,12 +17,12 @@ const getNodes = (isMobile: boolean) => {
     if (isMobile) {
         return [
             { id: '1', type: 'trigger', position: { x: 50, y: 0 }, data: { target: null } },
-            { id: '2', type: 'about', position: { x: 10, y: 220 }, data: { target: null } },
-            { id: '3', type: 'experience', position: { x: 10, y: 550 }, data: { target: 'experience' } },
-            { id: '4', type: 'education', position: { x: 30, y: 850 }, data: { target: 'education' } },
-            { id: '5', type: 'skills', position: { x: -10, y: 1100 }, data: { target: 'skills' } },
-            { id: '6', type: 'projects', position: { x: -10, y: 1400 }, data: { target: 'projects' } },
-            { id: '7', type: 'contactNodeType', position: { x: 50, y: 1800 }, data: { target: 'contact' } },
+            { id: '2', type: 'about', position: { x: 10, y: 200 }, data: { target: null } },
+            { id: '3', type: 'experience', position: { x: 10, y: 600 }, data: { target: 'experience' } },
+            { id: '4', type: 'education', position: { x: 30, y: 900 }, data: { target: 'education' } },
+            { id: '5', type: 'skills', position: { x: -10, y: 1150 }, data: { target: 'skills' } },
+            { id: '6', type: 'projects', position: { x: -10, y: 1550 }, data: { target: 'projects' } },
+            { id: '7', type: 'contactNodeType', position: { x: 50, y: 1900 }, data: { target: 'contact' } },
         ];
     }
     return [
@@ -89,7 +89,7 @@ export default function FlowCanvas() {
     }), []);
 
     return (
-        <div className="w-full h-full bg-[#FAFAFA] relative">
+        <div className="w-full h-full bg-[#FAFAFA] relative touch-pan-y [&_.react-flow__pane]:pointer-events-none">
             <ReactFlow
                 nodes={nodes}
                 edges={edges}

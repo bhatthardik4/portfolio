@@ -9,7 +9,7 @@ import { Chatbot } from "@/components/Chatbot";
 export default function Home() {
   return (
     <main className="flex flex-col w-full relative">
-      <section className="w-full h-[1900px] border-b border-[var(--grid-border)]">
+      <section className="w-full h-[2500px] md:h-[1900px] border-b border-[var(--grid-border)]">
         <FlowCanvas />
       </section>
       <Skills />

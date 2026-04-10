@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useEffect } from 'react';
 import {
     ReactFlow,
     MiniMap,
@@ -13,15 +13,28 @@ import {
 import { TriggerNode, SkillsNode, ExperienceNode, OutputNode, AboutNode, EducationNode, ProjectsNode } from './CustomNodes';
 import { Chatbot } from './Chatbot';
 
-const initialNodes = [
-    { id: '1', type: 'trigger', position: { x: 350, y: 0 }, data: { target: null } },
-    { id: '2', type: 'about', position: { x: 310, y: 220 }, data: { target: null } },
-    { id: '3', type: 'experience', position: { x: 60, y: 700 }, data: { target: 'experience' } },
-    { id: '4', type: 'education', position: { x: 580, y: 700 }, data: { target: 'education' } },
-    { id: '5', type: 'skills', position: { x: 40, y: 1100 }, data: { target: 'skills' } },
-    { id: '6', type: 'projects', position: { x: 540, y: 1100 }, data: { target: 'projects' } },
-    { id: '7', type: 'contactNodeType', position: { x: 350, y: 1600 }, data: { target: 'contact' } },
-];
+const getNodes = (isMobile: boolean) => {
+    if (isMobile) {
+        return [
+            { id: '1', type: 'trigger', position: { x: 50, y: 0 }, data: { target: null } },
+            { id: '2', type: 'about', position: { x: 10, y: 220 }, data: { target: null } },
+            { id: '3', type: 'experience', position: { x: 10, y: 550 }, data: { target: 'experience' } },
+            { id: '4', type: 'education', position: { x: 30, y: 850 }, data: { target: 'education' } },
+            { id: '5', type: 'skills', position: { x: -10, y: 1100 }, data: { target: 'skills' } },
+            { id: '6', type: 'projects', position: { x: -10, y: 1400 }, data: { target: 'projects' } },
+            { id: '7', type: 'contactNodeType', position: { x: 50, y: 1800 }, data: { target: 'contact' } },
+        ];
+    }
+    return [
+        { id: '1', type: 'trigger', position: { x: 350, y: 0 }, data: { target: null } },
+        { id: '2', type: 'about', position: { x: 310, y: 220 }, data: { target: null } },
+        { id: '3', type: 'experience', position: { x: 60, y: 700 }, data: { target: 'experience' } },
+        { id: '4', type: 'education', position: { x: 580, y: 700 }, data: { target: 'education' } },
+        { id: '5', type: 'skills', position: { x: 40, y: 1100 }, data: { target: 'skills' } },
+        { id: '6', type: 'projects', position: { x: 540, y: 1100 }, data: { target: 'projects' } },
+        { id: '7', type: 'contactNodeType', position: { x: 350, y: 1600 }, data: { target: 'contact' } },
+    ];
+};
 
 const edgeStyle = {
     stroke: '#3b82f6',
@@ -39,8 +52,19 @@ const initialEdges = [
 ];
 
 export default function FlowCanvas() {
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+    const [nodes, setNodes, onNodesChange] = useNodesState(getNodes(false));
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const isMobile = window.innerWidth < 768;
+            setNodes(getNodes(isMobile));
+        };
+        // Initial detection
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [setNodes]);
 
     const onConnect = useCallback((params: any) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 

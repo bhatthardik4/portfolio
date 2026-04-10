@@ -4,7 +4,7 @@ import { Globe, Link, Briefcase, Code2, Rocket, CloudLightning, MessageSquare, Z
 
 // Reusable Node Shell - LIGHT MODE with cursor-pointer
 const NodeShell = ({ title, icon: Icon, status, glowing = false, children, width = "w-[380px]" }: any) => (
-    <div className={`${width} rounded-xl border bg-white/95 backdrop-blur-xl overflow-hidden relative shadow-lg transition-all hover:border-blue-300 hover:shadow-xl hover:-translate-y-0.5 cursor-pointer ${glowing ? 'border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.15)]' : 'border-neutral-200'}`}>
+    <div className={`${width} max-w-[85vw] sm:max-w-none rounded-xl border bg-white/95 backdrop-blur-xl overflow-hidden relative shadow-lg transition-all hover:border-blue-300 hover:shadow-xl hover:-translate-y-0.5 cursor-pointer ${glowing ? 'border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.15)]' : 'border-neutral-200'}`}>
         <div className={`px-4 py-3 border-b flex justify-between items-center ${glowing ? 'border-blue-100 bg-blue-50/50' : 'border-neutral-200 bg-neutral-50/50'}`}>
             <div className="flex items-center gap-2">
                 <Icon className={`w-4 h-4 ${glowing ? 'text-blue-500' : 'text-neutral-500'}`} />

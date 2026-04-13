@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useMemo, useEffect } from 'react';
+import { useCallback, useMemo, useEffect, useState } from 'react';
 import {
     ReactFlow,
     MiniMap,
@@ -8,7 +8,9 @@ import {
     useNodesState,
     useEdgesState,
     addEdge,
-    BackgroundVariant
+    BackgroundVariant,
+    ReactFlowProvider,
+    useReactFlow
 } from '@xyflow/react';
 import { TriggerNode, SkillsNode, ExperienceNode, OutputNode, AboutNode, EducationNode, ProjectsNode } from './CustomNodes';
 import { Chatbot } from './Chatbot';
@@ -51,20 +53,67 @@ const initialEdges = [
     { id: 'e6-7', source: '6', target: '7', type: 'smoothstep', animated: true, style: edgeStyle },
 ];
 
-export default function FlowCanvas() {
+function FlowEngine() {
+    const { fitView } = useReactFlow();
     const [nodes, setNodes, onNodesChange] = useNodesState(getNodes(false));
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const [isMobile, setIsMobile] = useState(false);
 
+    // Initial boundary check + resize listener
     useEffect(() => {
         const handleResize = () => {
-            const isMobile = window.innerWidth < 768;
-            setNodes(getNodes(isMobile));
+            const mobile = window.innerWidth < 768;
+            setIsMobile((prev) => {
+                // Only reset the array completely if they literally swap from Phone to Desktop
+                if (prev !== mobile) {
+                    setNodes(getNodes(mobile));
+                }
+                return mobile;
+            });
         };
-        // Initial detection
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [setNodes]);
+
+    // Live Auto-Layout Engine for Phones based on dynamic text-wrapped heights!
+    useEffect(() => {
+        if (!isMobile) return;
+
+        // Ensure all nodes actually know their rendered DOM heights first
+        const allMeasured = nodes.every(n => ((n as any).measured?.height ?? (n as any).height));
+        if (!allMeasured || nodes.length === 0) return;
+
+        let currentY = 0;
+        const padding = 100; // Perfect visual wire length
+        const centerX = 200; // Central snapping axis
+        let changed = false;
+
+        const alignedNodes = nodes.map((n) => {
+            const nodeHeight = (n as any).measured?.height ?? (n as any).height ?? 0;
+            const nodeWidth = (n as any).measured?.width ?? (n as any).width ?? 300;
+
+            const newY = currentY;
+            const newX = centerX - (nodeWidth / 2);
+
+            if (n.position.y !== newY || n.position.x !== newX) changed = true;
+
+            currentY += nodeHeight + padding;
+
+            return {
+                ...n,
+                position: { x: newX, y: newY }
+            };
+        });
+
+        if (changed) {
+            setNodes(alignedNodes);
+            // Snap camera tracking to flawlessly encompass the re-arranged pipeline
+            setTimeout(() => {
+                fitView({ padding: 0.05, duration: 400 });
+            }, 50);
+        }
+    }, [nodes, isMobile, setNodes, fitView]);
 
     const onConnect = useCallback((params: any) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
@@ -112,5 +161,13 @@ export default function FlowCanvas() {
                 <Background variant={BackgroundVariant.Dots} gap={24} size={2} color="#E5E7EB" />
             </ReactFlow>
         </div>
+    );
+}
+
+export default function FlowCanvas() {
+    return (
+        <ReactFlowProvider>
+            <FlowEngine />
+        </ReactFlowProvider>
     );
 }
